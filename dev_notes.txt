@@ -1,0 +1,94 @@
+Git Code Tester App:
+https://codesandbox.io/
+
+PG Admin in our container 
+http://localhost:16543/browser/
+
+gatherAPI (node.js custom route framework)
+http://localhost:8080/routers/
+EX(JSON) : http://localhost:8080/routers/employees/getList
+
+gatherUI (REACT @MUI/Joy)
+http://localhost:3000/
+
+*Eventually we need to setup nginx on gatherUI to domain forward 
+to container services and kill outside access to ports*
+www.getogather.com:80 -> gatherUI:3000
+api.getogather.com:80 -> gatherAPI:8080
+db.getogather.com -> PGAdmin:16543
+
+Nginx Proxy Manager (for production)
+https://www.howtoforge.com/how-to-install-and-use-nginx-proxy-manager/
+
+Node PG (Postgres client)
+https://node-postgres.com/apis/client
+
+type Config = {
+  user?: string, // default process.env.PGUSER || process.env.USER
+  password?: string or function, //default process.env.PGPASSWORD
+  host?: string, // default process.env.PGHOST
+  database?: string, // default process.env.PGDATABASE || user
+  port?: number, // default process.env.PGPORT
+  connectionString?: string, // e.g. postgres://user:password@host:5432/database
+  ssl?: any, // passed directly to node.TLSSocket, supports all tls.connect options
+  types?: any, // custom type parsers
+  statement_timeout?: number, // number of milliseconds before a statement in query will time out, default is no timeout
+  query_timeout?: number, // number of milliseconds before a query call will timeout, default is no timeout
+  application_name?: string, // The name of the application that created this Client instance
+  connectionTimeoutMillis?: number, // number of milliseconds to wait for connection, default is no timeout
+  idle_in_transaction_session_timeout?: number // number of milliseconds before terminating any session with an open idle transaction, default is no timeout
+}
+
+// calling a function:
+const result = await db.func('funcName', [userName]);
+//=> SELECT * FROM funcName('user-name')
+
+// calling a stored procedure:
+const result = await db.proc('procName', [userName]);
+//=> CALL procName('user-name')
+
+Node js Express (MVC) Routes Explained
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes
+https://dzone.com/articles/create-routes-with-node-and-express
+
+
+REACT Quick start
+https://react.dev/learn
+
+React Fragments explained
+https://www.digitalocean.com/community/tutorials/react-fragments
+
+React MUI/Joy Documentation
+https://mui.com/joy-ui/getting-started/
+
+
+REACT QR Code Reader
+https://www.npmjs.com/package/react-qr-reader
+
+REACT QR Code Generator
+https://www.npmjs.com/package/react-qr-code
+
+REACT Webcam
+https://blog.logrocket.com/using-react-webcam-capture-display-images/
+
+REACT/Node Google oAuth
+https://www.sitepoint.com/google-auth-react-express/
+
+Postgres Data Replication
+https://hevodata.com/learn/postgresql-sync-replication/
+
+
+
+
+adTrack POC Steps:
+		1. Type in Pin -> Welcome {User}
+		2. Scan QR Code (Scan a test code on a static page)
+		3. Show the Pending Tasks Screen
+			- Prompt for Geolocation Auth
+			- Google Map showing location of QR code and location of User (should be on top of eachother)
+			- List of Pending tasks (Ad(Change Poster) / Maint(Change Battery) / Maint(Clean Graffiti))
+			-> Click "Change Poster" task
+		4. Directions for changing poster 
+			- Directions 
+			- Take Picture
+		5. Thank you for completing your task
