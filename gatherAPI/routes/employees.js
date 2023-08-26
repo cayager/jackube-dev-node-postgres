@@ -5,7 +5,7 @@ let client;
 async function init() {
 	
 	client = new Client({
-	  password: "Abey3053852272!",
+	  password: "{password}",
 	  user: "root",
 	  host: "postgres",
 	  database: "root",
