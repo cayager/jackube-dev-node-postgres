@@ -5,7 +5,7 @@ let dbClient;
 async function init() {
 	
 	dbClient = new Client({
-	  password: "Abey3053852272!",
+	  password: "{password}",
 	  user: "root",
 	  host: "postgres",
 	  database: "adTrack",
